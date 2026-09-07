@@ -1,0 +1,10 @@
+{
+  "name": "rs-optimization-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site RS OPTIMIZATION - prezentare, shop si admin panel.",
+  "//": "Site-ul in sine nu are build. package.json exista doar pentru Netlify Functions (admin panel live).",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

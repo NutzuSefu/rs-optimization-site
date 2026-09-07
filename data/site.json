@@ -1,0 +1,278 @@
+{
+  "version": 1,
+  "updatedAt": "",
+
+  "seo": {
+    "title": "RS OPTIMIZATION - Optimizare PC pentru FiveM & GTA V",
+    "description": "Aplicatie de optimizare Windows facuta pentru FiveM si GTA V. Curata cache-ul, elibereaza spatiu, aplica setarile de gaming ale Windows si instaleaza modul grafic - totul reversibil.",
+    "keywords": "fivem optimizare, gta v fps, optimizare pc gaming, fivem cache, mod grafic fivem, rs optimization"
+  },
+
+  "brand": {
+    "name": "RS OPTIMIZATION",
+    "tagline": "Optimize. Play. Dominate.",
+    "copyright": "RS OPTIMIZATION"
+  },
+
+  "links": {
+    "discord": "",
+    "youtube": "",
+    "tiktok": "",
+    "instagram": "",
+    "email": "",
+    "support": "",
+    "download": "",
+    "terms": "",
+    "privacy": ""
+  },
+
+  "announcement": {
+    "enabled": true,
+    "text": "Versiunea 1.0 este disponibila - intra pe Discord pentru suport si update-uri.",
+    "href": ""
+  },
+
+  "hero": {
+    "badge": "Windows 10 / 11  -  facut pentru FiveM",
+    "title": "PC-ul tau, in sfarsit",
+    "titleAccent": "optimizat",
+    "subtitle": "RS OPTIMIZATION curata cache-ul FiveM, elibereaza spatiu, aplica setarile de gaming ale Windows si instaleaza modul grafic. Fara tweak-uri placebo, fara servicii dezactivate - si totul se poate anula dintr-un singur click.",
+    "ctaPrimary": { "label": "VEZI PACHETELE", "href": "#shop" },
+    "ctaSecondary": { "label": "INTRA PE DISCORD", "href": "#discord" },
+    "note": "Nu dezactiveaza Windows Update, Defender sau firewall-ul."
+  },
+
+  "stats": [
+    { "value": "10.000+", "label": "curatari de cache" },
+    { "value": "11", "label": "optimizari reale" },
+    { "value": "100%", "label": "reversibil" },
+    { "value": "24/7", "label": "suport pe Discord" }
+  ],
+
+  "features": [
+    {
+      "icon": "broom",
+      "title": "Curatare cache FiveM",
+      "text": "Sterge cache-ul de asset-uri, server-cache si logurile FiveM. Setarile, key bindings-urile si screenshot-urile raman neatinse."
+    },
+    {
+      "icon": "gauge",
+      "title": "Optimizari Windows reale",
+      "text": "Game Mode pornit, inregistrarea in fundal oprita, plan de alimentare pe performanta. Doar setari oficiale Microsoft, nimic inventat."
+    },
+    {
+      "icon": "disk",
+      "title": "Eliberare spatiu",
+      "text": "Fisiere temporare, crash dumps, shader cache DirectX si de la driverul video. Vezi exact cat ocupa fiecare inainte sa stergi."
+    },
+    {
+      "icon": "palette",
+      "title": "Mod grafic automat",
+      "text": "Descarca, verifica hash-ul, face backup si instaleaza modul grafic in folderul de GTA V. Un click ca sa il scoti complet."
+    },
+    {
+      "icon": "chart",
+      "title": "Monitorizare live",
+      "text": "CPU, GPU, RAM si disc in timp real, plus lista proceselor care iti mananca resursele in timp ce joci."
+    },
+    {
+      "icon": "shield",
+      "title": "Restore Center",
+      "text": "Fiecare modificare e salvata cu valoarea anterioara. RESTORE ALL pune totul exact cum a fost."
+    }
+  ],
+
+  "showcase": [
+    {
+      "title": "Un singur buton, si gata",
+      "text": "Alegi presetul SAFE, GAMING sau CUSTOM si apesi OPTIMIZE NOW. Aplicatia iti arata exact ce urmeaza sa modifice inainte sa atinga ceva.",
+      "bullets": [
+        "Preseturi SAFE / GAMING / CUSTOM",
+        "Confirmare cu lista completa a modificarilor",
+        "Status live pentru fiecare operatiune"
+      ]
+    },
+    {
+      "title": "Modul grafic, instalat corect",
+      "text": "Arhiva se descarca pe HTTPS, i se verifica amprenta SHA-256, se despacheteaza protejat impotriva Zip Slip si abia apoi se copiaza in GTA V - dupa ce fisierele originale au fost salvate.",
+      "bullets": [
+        "Verificare SHA-256 inainte de instalare",
+        "Backup automat al fisierelor suprascrise",
+        "Dezinstalare completa din manifest"
+      ]
+    },
+    {
+      "title": "Nimic nu e ireversibil",
+      "text": "Restore Center tine evidenta a tot ce s-a modificat: chei de registru cu valoarea veche, planul de alimentare anterior, fisierele inlocuite de mod.",
+      "bullets": [
+        "Istoric complet cu data si ora",
+        "Restore individual sau global",
+        "Loguri fara parole sau token-uri"
+      ]
+    }
+  ],
+
+  "steps": [
+    { "title": "Descarci si instalezi", "text": "Un singur .exe. Porneste fara drepturi de administrator." },
+    { "title": "Apesi OPTIMIZE NOW", "text": "Alegi presetul, confirmi lista de modificari si astepti cateva secunde." },
+    { "title": "Intri in joc", "text": "Cache curat, setari de gaming aplicate, spatiu eliberat. Orice se poate anula." }
+  ],
+
+  "products": [
+    {
+      "id": "basic",
+      "name": "BASIC",
+      "badge": "",
+      "price": 49,
+      "oldPrice": 0,
+      "currency": "RON",
+      "period": "licenta permanenta",
+      "description": "Tot ce iti trebuie ca sa cureti si sa optimizezi PC-ul pentru FiveM.",
+      "features": [
+        "Curatare cache FiveM si temp",
+        "Preseturi SAFE si GAMING",
+        "Restore Center complet",
+        "System Monitor",
+        "Update-uri incluse"
+      ],
+      "buyUrl": "",
+      "buyLabel": "CUMPARA",
+      "popular": false,
+      "enabled": true
+    },
+    {
+      "id": "pro",
+      "name": "PRO",
+      "badge": "CEL MAI POPULAR",
+      "price": 89,
+      "oldPrice": 119,
+      "currency": "RON",
+      "period": "licenta permanenta",
+      "description": "Basic plus modul grafic instalat automat si suport prioritar.",
+      "features": [
+        "Tot ce include BASIC",
+        "Mod grafic instalat automat",
+        "Backup si dezinstalare mod",
+        "Preset CUSTOM nelimitat",
+        "Suport prioritar pe Discord",
+        "Update-uri incluse"
+      ],
+      "buyUrl": "",
+      "buyLabel": "CUMPARA",
+      "popular": true,
+      "enabled": true
+    },
+    {
+      "id": "ultimate",
+      "name": "ULTIMATE",
+      "badge": "",
+      "price": 149,
+      "oldPrice": 0,
+      "currency": "RON",
+      "period": "licenta permanenta",
+      "description": "Pentru cei care vor si setare personalizata, facuta impreuna cu noi.",
+      "features": [
+        "Tot ce include PRO",
+        "Sesiune 1-la-1 de setare",
+        "Profil grafic personalizat",
+        "Verificare configuratie PC",
+        "Acces early la versiuni noi",
+        "Suport prioritar pe Discord"
+      ],
+      "buyUrl": "",
+      "buyLabel": "CUMPARA",
+      "popular": false,
+      "enabled": true
+    }
+  ],
+
+  "coupons": [
+    {
+      "code": "RS10",
+      "percent": 10,
+      "amount": 0,
+      "description": "10% reducere la orice pachet",
+      "active": true,
+      "expiresAt": "",
+      "maxUses": 0,
+      "uses": 0
+    }
+  ],
+
+  "popup": {
+    "enabled": true,
+    "trigger": "delay",
+    "delaySeconds": 12,
+    "showAgainAfterDays": 7,
+    "eyebrow": "OFERTA DE BUN VENIT",
+    "title": "Vrei o reducere?",
+    "text": "Lasa-ne adresa ta de email si primesti pe loc codul de reducere, plus anunt cand apare o versiune noua.",
+    "placeholder": "adresa ta de email",
+    "buttonLabel": "VREAU CUPONUL",
+    "couponCode": "RS10",
+    "successTitle": "Cuponul tau este gata",
+    "successText": "Noteaza-l sau copiaza-l. Il folosesti la finalizarea comenzii sau cand deschizi ticketul pe Discord.",
+    "consentText": "Prin trimitere esti de acord sa primesti email-uri de la RS OPTIMIZATION. Te poti dezabona oricand."
+  },
+
+  "testimonials": [
+    { "name": "Andrei M.", "role": "Jucator FiveM", "rating": 5, "text": "Mi-a curatat 14 GB de cache si mi-a scos stutter-ul de la intrarea pe server. Merita." },
+    { "name": "Cristi P.", "role": "Owner server RP", "rating": 5, "text": "Il recomand la toti jucatorii care se plang de FPS. Faptul ca poti da restore la tot e cel mai important." },
+    { "name": "Alex D.", "role": "Streamer", "rating": 5, "text": "Modul grafic se instaleaza singur si il scoti tot singur. Nu mai umblu manual prin folderul de GTA." }
+  ],
+
+  "faq": [
+    {
+      "q": "Chiar imi creste FPS-ul?",
+      "a": "Nu promitem cifre inventate. Ce face aplicatia este masurabil: elibereaza spatiu, sterge cache-ul care incetineste incarcarea, porneste Game Mode, opreste inregistrarea in fundal si pune planul de alimentare pe performanta. Cat castigi depinde de PC-ul tau si de cat de incarcat era."
+    },
+    {
+      "q": "Este sigur? Imi strica Windows-ul?",
+      "a": "Nu dezactiveaza Windows Update, Defender, firewall-ul, reteaua, sunetul sau alte servicii de care depinde sistemul. Nu are tweak-uri placebo. Fiecare modificare reversibila e salvata in Restore Center cu valoarea anterioara."
+    },
+    {
+      "q": "Am nevoie de drepturi de administrator?",
+      "a": "Nu, aplicatia porneste normal. Doar cateva operatiuni (de exemplu scheduling GPU accelerat hardware) cer aprobare UAC, si doar atunci cand le alegi tu."
+    },
+    {
+      "q": "Ce se sterge exact din FiveM?",
+      "a": "Doar cache-ul: data\\cache, server-cache, server-cache-priv, logs si crashes. Contul tau, key bindings-urile, setarile grafice si screenshot-urile nu sunt atinse."
+    },
+    {
+      "q": "Pot sa scot modul grafic dupa ce l-am instalat?",
+      "a": "Da. Aplicatia tine un manifest cu fiecare fisier scris si o copie a fisierelor suprascrise. Un click pe REMOVE GRAPHICS MOD si folderul de GTA V revine exact cum era."
+    },
+    {
+      "q": "Cum primesc licenta dupa ce platesc?",
+      "a": "Dupa confirmarea platii primesti pe Discord si pe email link-ul de descarcare si cheia. Daca intarzie ceva, deschide un ticket pe Discord."
+    },
+    {
+      "q": "Merge pe Windows 10?",
+      "a": "Da, pe Windows 10 si Windows 11, pe 64 de biti."
+    },
+    {
+      "q": "Cum folosesc un cod de reducere?",
+      "a": "Il introduci in campul de cupon din pagina de plata sau il mentionezi cand deschizi ticketul de comanda pe Discord."
+    }
+  ],
+
+  "discordCta": {
+    "eyebrow": "COMUNITATE",
+    "title": "Intra pe Discord",
+    "text": "Suport, update-uri, ghiduri de setare si oameni care se pricep. Deschizi un ticket si primesti raspuns.",
+    "buttonLabel": "INTRA PE SERVER"
+  },
+
+  "footer": {
+    "about": "RS OPTIMIZATION este o aplicatie de optimizare Windows facuta pentru jucatorii de FiveM si GTA V. Nu este afiliata cu Rockstar Games, Take-Two Interactive sau cu proiectul Cfx.re / FiveM."
+  },
+
+  "settings": {
+    "currencySymbol": "RON",
+    "netlifyForms": true,
+    "webhookUrl": "",
+    "showTestimonials": true,
+    "showStats": true,
+    "showCouponBanner": true
+  }
+}

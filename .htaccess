@@ -1,0 +1,38 @@
+# ---------------------------------------------------------------- RS OPTIMIZATION
+# Configurare Apache. Daca hostingul tau foloseste nginx, vezi README.md.
+
+# Pagina implicita
+DirectoryIndex index.html
+
+# Nu lasa listarea folderelor
+Options -Indexes
+
+# Blocheaza accesul direct la fisierele private si la sursele de imagini
+<FilesMatch "^(auth|subscribers)\.json$">
+    Require all denied
+</FilesMatch>
+
+RedirectMatch 404 /_source/
+
+# Anteturi de securitate
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Cache pentru fisierele statice (nu si pentru site.json, care se schimba des)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType application/json "access plus 0 seconds"
+</IfModule>
+
+# Compresie
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>

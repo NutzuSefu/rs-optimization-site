@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — RS OPTIMIZATION</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="a-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v8a2 2 0 0 1-1 1.7l-7 4a2 2 0 0 1-2 0l-7-4A2 2 0 0 1 3 16V8a2 2 0 0 1 1-1.7l7-4a2 2 0 0 1 2 0l7 4A2 2 0 0 1 21 8z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></symbol>
+    <symbol id="a-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V4a1 1 0 0 1 1-1h9z"/><circle cx="7.5" cy="7.5" r="1.4"/></symbol>
+    <symbol id="a-popup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M22 8v10a2 2 0 0 1-2 2H8"/></symbol>
+    <symbol id="a-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+    <symbol id="a-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></symbol>
+    <symbol id="a-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/></symbol>
+    <symbol id="a-cog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 9 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 9a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></symbol>
+    <symbol id="a-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></symbol>
+    <symbol id="a-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="a-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+    <symbol id="a-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5M12 8h.01"/></symbol>
+    <symbol id="a-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="a-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============================================================== login ===== -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login">
+    <img src="assets/img/rs-logo.png" alt="RS OPTIMIZATION">
+    <h1 class="chrome" id="loginTitle">Admin Panel</h1>
+    <p class="login__sub" id="loginSub">Autentifică-te ca să administrezi site-ul</p>
+
+    <form id="loginForm">
+      <input type="password" class="field" id="loginPass" placeholder="parola" autocomplete="current-password" required>
+      <input type="password" class="field" id="loginPass2" placeholder="confirmă parola" autocomplete="new-password" hidden>
+      <div class="login__err" id="loginErr"></div>
+      <button type="submit" class="btn btn--primary btn--block" id="loginBtn">INTRĂ</button>
+    </form>
+
+    <p class="login__hint" id="loginHint"></p>
+  </div>
+</div>
+
+<!-- ============================================================== admin ===== -->
+<div class="admin" id="admin">
+
+  <aside class="side">
+    <div class="side__brand">
+      <img src="assets/img/rs-logo.png" alt="">
+      <div><b>RS OPTIMIZATION</b><span>ADMIN PANEL</span></div>
+    </div>
+
+    <nav class="side__nav" id="tabs">
+      <button data-tab="products"><svg width="17" height="17"><use href="#a-box"/></svg> Produse <span class="count" id="cProducts"></span></button>
+      <button data-tab="coupons"><svg width="17" height="17"><use href="#a-tag"/></svg> Cupoane <span class="count" id="cCoupons"></span></button>
+      <button data-tab="popup"><svg width="17" height="17"><use href="#a-popup"/></svg> Popup email</button>
+      <button data-tab="content"><svg width="17" height="17"><use href="#a-text"/></svg> Conținut</button>
+      <button data-tab="links"><svg width="17" height="17"><use href="#a-link"/></svg> Link-uri</button>
+      <button data-tab="subs"><svg width="17" height="17"><use href="#a-users"/></svg> Abonați <span class="count" id="cSubs"></span></button>
+      <button data-tab="settings"><svg width="17" height="17"><use href="#a-cog"/></svg> Setări</button>
+    </nav>
+
+    <div class="side__foot">
+      <a class="btn btn--ghost btn--sm" href="index.html" target="_blank" rel="noopener">Vezi site-ul</a>
+      <button class="btn btn--ghost btn--sm" id="logoutBtn">
+        <svg width="15" height="15"><use href="#a-out"/></svg> Ieși
+      </button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <h2 id="panelTitle">Produse</h2>
+      <div class="topbar__actions">
+        <span class="srcpill" id="srcPill"><i></i><span id="srcText">—</span></span>
+        <button class="btn btn--ghost btn--sm" id="downloadBtn" hidden>DESCARCĂ site.json</button>
+        <button class="btn btn--primary btn--sm" id="saveBtn">SALVEAZĂ</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- ------------------------------------------------------- produse -->
+      <section class="panel" data-panel="products">
+        <div class="note">
+          <svg width="18" height="18"><use href="#a-info"/></svg>
+          <div>Fiecare pachet apare în secțiunea <b>SHOP</b> de pe site. <b>Link cumpărare</b> e locul unde ajunge clientul când apasă butonul — poți pune link de Discord, de plată, orice URL <code>https://</code>. Dacă îl lași gol, butonul duce la Discord.</div>
+        </div>
+        <div class="rep" id="repProducts"></div>
+        <button class="btn btn--ghost" id="addProduct" style="margin-top:14px">+ ADAUGĂ PACHET</button>
+      </section>
+
+      <!-- ------------------------------------------------------- cupoane -->
+      <section class="panel" data-panel="coupons">
+        <div class="note">
+          <svg width="18" height="18"><use href="#a-info"/></svg>
+          <div>Cuponul <b>activ</b> apare automat în bannerul din SHOP, recalculează prețurile afișate și e cel oferit în popup-ul de email. Pune <b>procent</b> SAU <b>sumă fixă</b>, nu amândouă.</div>
+        </div>
+        <div class="rep" id="repCoupons"></div>
+        <button class="btn btn--ghost" id="addCoupon" style="margin-top:14px">+ ADAUGĂ CUPON</button>
+      </section>
+
+      <!-- --------------------------------------------------------- popup -->
+      <section class="panel" data-panel="popup">
+        <div class="note">
+          <svg width="18" height="18"><use href="#a-info"/></svg>
+          <div>Popup-ul apare o singură dată per vizitator, apoi se ascunde pentru numărul de zile setat mai jos.</div>
+        </div>
+        <div id="popupForm"></div>
+      </section>
+
+      <!-- ------------------------------------------------------- continut -->
+      <section class="panel" data-panel="content">
+        <div id="contentForms"></div>
+      </section>
+
+      <!-- --------------------------------------------------------- linkuri -->
+      <section class="panel" data-panel="links">
+        <div id="linksForm"></div>
+      </section>
+
+      <!-- --------------------------------------------------------- abonati -->
+      <section class="panel" data-panel="subs">
+        <div id="subsNote"></div>
+        <div class="fieldset">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <h3 style="flex:1">Emailuri colectate</h3>
+            <button class="btn btn--ghost btn--sm" id="refreshSubs">REÎMPROSPĂTEAZĂ</button>
+            <button class="btn btn--ghost btn--sm" id="exportSubs">EXPORT CSV</button>
+          </div>
+          <div id="subsTable"></div>
+        </div>
+      </section>
+
+      <!-- --------------------------------------------------------- setari -->
+      <section class="panel" data-panel="settings">
+        <div id="settingsForm"></div>
+
+        <div class="fieldset" id="pwFieldset">
+          <h3>Schimbă parola de admin</h3>
+          <p class="hint">Parola nu este stocată nicăieri — serverul păstrează doar un hash.</p>
+          <div class="f"><label>Parola actuală</label><input type="password" class="field" id="pwOld" autocomplete="current-password"></div>
+          <div class="f"><label>Parola nouă (minim 8 caractere)</label><input type="password" class="field" id="pwNew" autocomplete="new-password"></div>
+          <div class="f"><label>Confirmă parola nouă</label><input type="password" class="field" id="pwNew2" autocomplete="new-password"></div>
+          <button class="btn btn--ghost" id="changePw">SCHIMBĂ PAROLA</button>
+        </div>
+
+        <div class="fieldset">
+          <h3>Backup configurație</h3>
+          <p class="hint">Descarcă tot conținutul site-ului ca fișier JSON, sau încarcă unul salvat anterior.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn btn--ghost" id="exportJson">DESCARCĂ site.json</button>
+            <button class="btn btn--ghost" id="importJson">ÎNCARCĂ site.json</button>
+            <input type="file" id="importFile" accept="application/json,.json" hidden>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="savebar" id="saveBar">
+  <span>Ai modificări nesalvate</span>
+  <button class="btn btn--primary btn--sm" id="saveBtn2">SALVEAZĂ</button>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="assets/js/store.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

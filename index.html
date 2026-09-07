@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RS OPTIMIZATION — Optimizare PC pentru FiveM &amp; GTA V</title>
+<meta name="description" content="Aplicație de optimizare Windows făcută pentru FiveM și GTA V. Curăță cache-ul, eliberează spațiu, aplică setările de gaming ale Windows și instalează modul grafic — totul reversibil.">
+<meta name="theme-color" content="#04060b">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="RS OPTIMIZATION — Optimize. Play. Dominate.">
+<meta property="og:description" content="Optimizare PC pentru FiveM și GTA V. Cache curat, setări de gaming oficiale, mod grafic instalat automat — și totul reversibil.">
+<meta property="og:image" content="assets/img/rs-logo-hero.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ===================================================== icon sprite ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
+    <symbol id="i-broom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3 9 13"/><path d="M12 10 5.5 16.5a3.5 3.5 0 0 0 5 5L17 15z"/><path d="M8 21H3v-5"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14 16 9"/><circle cx="12" cy="14" r="9"/><path d="M3.5 14h2M18.5 14h2M12 5.5v2"/></symbol>
+    <symbol id="i-disk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="7" rx="2"/><rect x="2" y="13" width="20" height="7" rx="2"/><path d="M6 7.5h.01M6 16.5h.01"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.2"/><circle cx="17.5" cy="10.5" r="1.2"/><circle cx="8.5" cy="7.5" r="1.2"/><circle cx="6.5" cy="12.5" r="1.2"/><path d="M12 2a10 10 0 1 0 0 20c.9 0 1.5-.7 1.5-1.5 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.8.7-1.5 1.5-1.5H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 15l3.5-4 3 3L20 7"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.2-.6L12 2l2.8 6.6 7.2.6-5.5 4.8 1.7 7z"/></symbol>
+    <symbol id="i-discord" viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 5.3A16 16 0 0 0 15.5 4l-.2.4a12 12 0 0 1 3.3 1.6 15 15 0 0 0-12.9 0A12 12 0 0 1 9 4.4L8.8 4a16 16 0 0 0-3.8 1.3C2.4 9.1 1.7 12.9 2 16.6a16 16 0 0 0 4.9 2.5l1-1.6a10 10 0 0 1-1.6-.8l.4-.3a11 11 0 0 0 9.4 0l.4.3a10 10 0 0 1-1.6.8l1 1.6a16 16 0 0 0 4.9-2.5c.4-4.3-.6-8-2.5-11.3zM9 14.3c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.8.9 1.7 2c0 1.1-.8 2-1.7 2zm6 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.8.9 1.7 2c0 1.1-.7 2-1.7 2z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7.5a3 3 0 0 0-2-2C18.2 5 12 5 12 5s-6.2 0-8 .5a3 3 0 0 0-2 2A31 31 0 0 0 1.5 12 31 31 0 0 0 2 16.5a3 3 0 0 0 2 2c1.8.5 8 .5 8 .5s6.2 0 8-.5a3 3 0 0 0 2-2 31 31 0 0 0 .5-4.5 31 31 0 0 0-.5-4.5zM10 15V9l5.2 3z"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2h-3v13a2.5 2.5 0 1 1-2.5-2.5c.2 0 .4 0 .5.1V9.5A5.5 5.5 0 1 0 16.5 15V8.6a7 7 0 0 0 4 1.3V6.8a4.3 4.3 0 0 1-4-4.8z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V4a1 1 0 0 1 1-1h9z"/><circle cx="7.5" cy="7.5" r="1.4"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===================================================== announcement ===== -->
+<div class="announce" id="announce" hidden>
+  <span id="announceText"></span>
+  <button class="announce__close" id="announceClose" aria-label="Închide anunțul">
+    <svg width="13" height="13"><use href="#i-x"/></svg>
+  </button>
+</div>
+
+<!-- ============================================================== nav ===== -->
+<header class="nav" id="nav">
+  <div class="shell nav__inner">
+    <a href="#top" class="nav__logo">
+      <img src="assets/img/rs-logo.png" alt="RS OPTIMIZATION">
+      <span class="nav__logo-text">RS<span>OPTIMIZATION</span></span>
+    </a>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="#features">Ce face</a>
+      <a href="#how">Cum funcționează</a>
+      <a href="#shop">Prețuri</a>
+      <a href="#reviews">Păreri</a>
+      <a href="#faq">Întrebări</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a href="#discord" class="btn btn--ghost btn--sm btn--discord" data-link="discord">
+        <svg width="16" height="16"><use href="#i-discord"/></svg> Discord
+      </a>
+      <a href="#shop" class="btn btn--primary btn--sm">Cumpără</a>
+      <button class="nav__burger" id="burger" aria-label="Meniu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================================================= hero ===== -->
+<section class="hero">
+  <div class="hero__bg">
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+    <div class="hero__grid"></div>
+  </div>
+
+  <div class="shell hero__inner">
+    <div class="hero__copy">
+      <div class="hero__badge"><i></i><span id="heroBadge">Windows 10 / 11 — făcut pentru FiveM</span></div>
+      <h1><span class="chrome" id="heroTitle">PC-ul tău, în sfârșit</span> <span class="neon" id="heroAccent">optimizat</span></h1>
+      <p class="hero__sub" id="heroSub"></p>
+
+      <div class="hero__cta">
+        <a class="btn btn--primary btn--lg" id="heroCta1" href="#shop">VEZI PACHETELE</a>
+        <a class="btn btn--lg" id="heroCta2" href="#discord">INTRĂ PE DISCORD</a>
+      </div>
+
+      <div class="hero__note">
+        <svg width="17" height="17"><use href="#i-shield"/></svg>
+        <span id="heroNote"></span>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <img src="assets/img/rs-logo-hero.png" alt="Logo RS OPTIMIZATION" fetchpriority="high">
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================== compat ===== -->
+<section class="compat">
+  <div class="shell compat__inner">
+    <img src="assets/img/fivem-logo.png" alt="FiveM" class="compat__logo">
+    <div class="compat__text">
+      <strong>Făcut special pentru FiveM și GTA V</strong>
+      <span>Windows 10 și Windows 11, 64 de biți. Detectează singur unde ai instalat jocul.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ stats ===== -->
+<section class="stats" id="statsSection">
+  <div class="shell">
+    <div class="stats__grid" id="statsGrid"></div>
+  </div>
+</section>
+
+<!-- ========================================================= features ===== -->
+<section class="section" id="features">
+  <div class="shell">
+    <div class="section-head section-head--center reveal-up">
+      <div class="eyebrow">CU CE TE AJUTĂ</div>
+      <h2 class="chrome">Tot ce ține de performanță,<br>într-un singur loc</h2>
+      <p>Fără tweak-uri inventate și fără servicii Windows dezactivate. Doar lucruri documentate, măsurabile și care se pot anula.</p>
+    </div>
+    <div class="grid-3" id="featuresGrid"></div>
+  </div>
+</section>
+
+<!-- ========================================================= showcase ===== -->
+<section class="section section--tight" id="how">
+  <div class="shell">
+    <div class="showcase" id="showcase"></div>
+  </div>
+</section>
+
+<!-- ============================================================ steps ===== -->
+<section class="section section--tight">
+  <div class="shell">
+    <div class="section-head section-head--center reveal-up">
+      <div class="eyebrow">SIMPLU</div>
+      <h2 class="chrome">Trei pași și ai terminat</h2>
+    </div>
+    <div class="steps" id="stepsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================= shop ===== -->
+<section class="section" id="shop">
+  <div class="shell">
+    <div class="section-head section-head--center reveal-up">
+      <div class="eyebrow">SHOP</div>
+      <h2 class="chrome">Alege pachetul potrivit</h2>
+      <p>Licență permanentă, update-uri incluse, suport pe Discord.</p>
+    </div>
+
+    <div class="shop-note reveal-up" id="couponBanner" hidden>
+      <svg width="18" height="18"><use href="#i-tag"/></svg>
+      <span>Folosește codul <code id="couponBannerCode"></code> <span id="couponBannerDesc"></span></span>
+    </div>
+
+    <div class="plans" id="plansGrid"></div>
+  </div>
+</section>
+
+<!-- ========================================================== reviews ===== -->
+<section class="section section--tight" id="reviews">
+  <div class="shell">
+    <div class="section-head section-head--center reveal-up">
+      <div class="eyebrow">PĂRERI</div>
+      <h2 class="chrome">Ce spun cei care îl folosesc</h2>
+    </div>
+    <div class="grid-3" id="reviewsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================== faq ===== -->
+<section class="section" id="faq">
+  <div class="shell">
+    <div class="section-head section-head--center reveal-up">
+      <div class="eyebrow">ÎNTREBĂRI FRECVENTE</div>
+      <h2 class="chrome">Ce trebuie să știi</h2>
+    </div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ========================================================== discord ===== -->
+<section class="section section--tight" id="discord">
+  <div class="shell">
+    <div class="discord-band reveal-up">
+      <div class="discord-band__icon"><svg width="34" height="34"><use href="#i-discord"/></svg></div>
+      <div class="eyebrow" id="discordEyebrow">COMUNITATE</div>
+      <h2 class="chrome" id="discordTitle">Intră pe Discord</h2>
+      <p id="discordText"></p>
+      <a class="btn btn--primary btn--lg" id="discordBtn" data-link="discord" href="#">INTRĂ PE SERVER</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================================== footer ===== -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="assets/img/rs-logo.png" alt="RS OPTIMIZATION">
+        <p class="footer__about" id="footerAbout"></p>
+      </div>
+
+      <div>
+        <h4>Produs</h4>
+        <div class="footer__links">
+          <a href="#features">Ce face</a>
+          <a href="#how">Cum funcționează</a>
+          <a href="#shop">Prețuri</a>
+          <a href="#" data-link="download">Descarcă</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Ajutor</h4>
+        <div class="footer__links">
+          <a href="#faq">Întrebări frecvente</a>
+          <a href="#" data-link="discord">Suport pe Discord</a>
+          <a href="#" data-link="support">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <div class="footer__links">
+          <a href="#" data-link="terms">Termeni și condiții</a>
+          <a href="#" data-link="privacy">Confidențialitate</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> <span id="footerBrand">RS OPTIMIZATION</span>. Toate drepturile rezervate.</span>
+      <div class="footer__social" id="social"></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================================================== popup / cupon ===== -->
+<div class="modal" id="couponModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal__scrim" data-close></div>
+
+  <div class="modal__box">
+    <div class="modal__glow"></div>
+    <button class="modal__close" data-close aria-label="Închide">
+      <svg width="16" height="16"><use href="#i-x"/></svg>
+    </button>
+
+    <!-- pasul 1: formularul -->
+    <div id="modalStepForm">
+      <div class="eyebrow" id="modalEyebrow">OFERTĂ DE BUN VENIT</div>
+      <h3 id="modalTitle" class="chrome">Vrei o reducere?</h3>
+      <p id="modalText"></p>
+
+      <!--
+        Atributele data-netlify fac ca formularul sa fie detectat de Netlify Forms
+        la deploy. Pe orice alt hosting sunt pur si simplu ignorate.
+      -->
+      <form class="modal__form" id="couponForm" name="rs-coupon" method="POST"
+            data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="rs-coupon">
+        <input type="hidden" name="coupon" id="couponField" value="">
+        <p hidden aria-hidden="true">
+          <label>Lasă gol: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </p>
+
+        <input type="email" name="email" class="field" id="emailInput" autocomplete="email" required>
+        <div class="modal__error" id="emailError"></div>
+        <button type="submit" class="btn btn--primary btn--block" id="couponSubmit">VREAU CUPONUL</button>
+        <p class="modal__consent" id="modalConsent"></p>
+      </form>
+    </div>
+
+    <!-- pasul 2: cuponul dezvăluit -->
+    <div id="modalStepDone" hidden>
+      <div class="reveal">
+        <div class="reveal__check"><svg width="32" height="32"><use href="#i-check"/></svg></div>
+        <h3 class="chrome" id="doneTitle">Cuponul tău este gata</h3>
+        <p id="doneText"></p>
+
+        <div class="coupon">
+          <div class="coupon__label">CODUL TĂU</div>
+          <div class="coupon__code" id="doneCode">—</div>
+          <div class="coupon__desc" id="doneDesc"></div>
+        </div>
+
+        <button class="coupon__copy" id="copyCode">
+          <svg width="15" height="15"><use href="#i-copy"/></svg> Copiază codul
+        </button>
+
+        <a class="btn btn--primary btn--block" href="#shop" data-close style="margin-top:18px">VEZI PACHETELE</a>
+      </div>
+    </div>
+
+    <div class="confetti" id="confetti"></div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="assets/js/store.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

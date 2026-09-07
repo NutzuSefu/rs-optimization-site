@@ -1,0 +1,31 @@
+# ============================================================================
+#  RS OPTIMIZATION — ce NU intra in repo
+# ============================================================================
+
+# ---- varianta PHP a backendului -------------------------------------------
+# Pe Netlify backendul e netlify/functions/config.mjs, care raspunde chiar pe
+# ruta /api/config.php. Daca ar exista si fisierul static api/config.php, cele
+# doua s-ar bate pe aceeasi adresa. Folderul ramane la tine pe calculator,
+# pentru cazul in care muti site-ul pe un hosting cu PHP.
+/api/
+
+# ---- date locale, niciodata in repo ---------------------------------------
+# Hash-ul parolei si lista de abonati (le genereaza varianta PHP)
+**/storage/auth.json
+**/storage/subscribers.json
+# Backup-ul creat la fiecare salvare
+data/site.json.bak
+
+# ---- logo-urile originale (4 MB) ------------------------------------------
+# Sunt blocate oricum de netlify.toml, dar nu au ce cauta intr-un repo public.
+# Daca repo-ul e PRIVAT si vrei sa le versionezi, sterge linia de mai jos.
+/_source/
+
+# ---- uzuale ----------------------------------------------------------------
+node_modules/
+.netlify/
+.env
+.env.*
+.DS_Store
+Thumbs.db
+desktop.ini
