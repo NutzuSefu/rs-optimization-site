@@ -286,3 +286,24 @@ Ca să nu fie surprize:
 - **nu validează cupoanele la plată.** Cuponul e afișat și recalculează prețul pe
   site; verificarea lui la comandă o faci tu (sau procesatorul de plăți).
 - **nu trimite emailuri** — vezi secțiunea 5.
+
+---
+
+## 10. Conturi web și licențe
+
+Pagina `account.html` folosește același Cloudflare License API ca aplicația desktop
+și botul Discord. Are autentificare cu email, conectare OAuth Discord/Google,
+verificare email, sesiune server-side, revendicare de cheie, conexiuni și dispozitive.
+
+Pe Netlify setează `LICENSE_SERVICE_URL` cu URL-ul Worker-ului; funcția
+`netlify/functions/auth.mjs` face proxy same-origin. Pentru OAuth configurează în
+Worker `WEB_APP_ORIGIN`, `PUBLIC_APP_URL`, `OAUTH_REDIRECT_BASE_URL` și callback-urile:
+
+```text
+https://<worker-host>/v1/oauth/discord/callback
+https://<worker-host>/v1/oauth/google/callback
+```
+
+Aplică migrarea D1 `migrations/0004_web_auth.sql` înainte de publicarea Worker-ului.
+Parolele nu sunt stocate în clar, iar ban-ul dat din bot este respectat la următoarea
+verificare de sesiune în site și în aplicație.
