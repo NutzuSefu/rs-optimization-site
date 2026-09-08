@@ -261,15 +261,52 @@
         });
     }
 
+    /* Grila e neregulata intentionat: primul beneficiu ocupa un bloc de 2x2
+       si primeste si un vizual, urmatoarele doua sunt patrate mici, restul
+       se intind pe cate doua coloane. Asta rupe monotonia a sase cutii egale.
+
+       Formele se dau dupa pozitie, nu dupa continut, ca sa ramana valabile
+       si daca se adauga sau se scoate un beneficiu din panoul de admin. */
+    var BENTO_SHAPE = ['xl', '', '', 'w', 'w', 'w'];
+
+    // Cat ocupa fiecare categorie in exemplul din cardul mare.
+    var CLEAN_ROWS = [
+        ['cache/priv', 59, '5,9 GB'],
+        ['subprocess', 14, '1,4 GB'],
+        ['server-cache', 11, '1,1 GB'],
+        ['temp Windows', 21, '2,1 GB']
+    ];
+
     function renderFeatures() {
         var items = config.features || [];
-        $('featuresGrid').innerHTML = items.map(function (f) {
-            return '<article class="card feature reveal-pop">' +
-                '<div class="feature__icon"><svg width="26" height="26"><use href="#i-' + esc(f.icon || 'bolt') + '"/></svg></div>' +
+
+        $('featuresGrid').innerHTML = items.map(function (f, i) {
+            var shape = BENTO_SHAPE[i % BENTO_SHAPE.length];
+            var cls = 'card bento__c reveal-pop' + (shape ? ' bento__c--' + shape : '');
+            var size = shape === 'xl' ? 30 : 24;
+
+            var extra = '';
+            if (shape === 'xl') {
+                extra = '<div class="bento__tag">Exemplu</div>' +
+                    '<div class="bento__viz">' +
+                        CLEAN_ROWS.map(function (r) {
+                            return '<div class="bento__bar">' +
+                                '<b>' + esc(r[0]) + '</b>' +
+                                '<i style="--w:' + r[1] + '%"></i>' +
+                                '<em>' + esc(r[2]) + '</em>' +
+                                '</div>';
+                        }).join('') +
+                    '</div>';
+            }
+
+            return '<article class="' + cls + '">' +
+                '<div class="bento__ico"><svg width="' + size + '" height="' + size + '"><use href="#i-' + esc(f.icon || 'bolt') + '"/></svg></div>' +
                 '<h3>' + esc(f.title) + '</h3>' +
                 '<p>' + esc(f.text) + '</p>' +
+                extra +
                 '</article>';
         }).join('');
+
         bindCardGlow();
     }
 
@@ -905,4 +942,19 @@
         var v = Number(n) || 0;
         return Number.isInteger(v) ? String(v) : v.toFixed(2).replace('.', ',');
     }
+
+    /* Blocurile din care e construita fereastra aplicatiei sunt expuse ca sa
+       le poata refolosi si fx.js (demo-ul cu taburi), fara sa le duplice. */
+    window.RSApp = {
+        nav: NAV,
+        frame: appFrame,
+        head: head,
+        chip: chip,
+        row: taskRow,
+        pbar: progress,
+        gauge: gauge,
+        spark: spark,
+        toast: toast,
+        esc: esc
+    };
 })();

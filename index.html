@@ -18,7 +18,30 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=2">
+<link rel="stylesheet" href="assets/css/style.css?v=3">
+
+<script>
+/* Preloaderul apare doar daca exista JavaScript - altfel pagina nu trebuie
+   sa fie acoperita de nimic. Al doilea rol al acestui bloc e plasa de
+   siguranta: chiar daca fx.js nu se incarca sau arunca o eroare, ecranul
+   de intrare dispare dupa 4,5 secunde si pagina ramane utilizabila. */
+(function () {
+    document.documentElement.className += ' js';
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.add('is-loading');
+    });
+
+    setTimeout(function () {
+        var p = document.getElementById('preload');
+        if (p && !p.dataset.done && p.parentNode) p.parentNode.removeChild(p);
+        if (document.body) {
+            document.body.classList.remove('is-loading');
+            document.body.classList.add('is-lit');
+        }
+    }, 4500);
+})();
+</script>
 </head>
 <body>
 
@@ -45,6 +68,24 @@
     <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V4a1 1 0 0 1 1-1h9z"/><circle cx="7.5" cy="7.5" r="1.4"/></symbol>
   </defs>
 </svg>
+
+<!-- ====================================================== preloader ===== -->
+<div class="preload" id="preload" aria-hidden="true">
+  <div class="preload__half preload__half--t"></div>
+  <div class="preload__half preload__half--b"></div>
+
+  <div class="preload__inner">
+    <div class="preload__ring">
+      <svg viewBox="0 0 132 132">
+        <circle class="t" cx="66" cy="66" r="63"/>
+        <circle class="a" cx="66" cy="66" r="63"/>
+      </svg>
+      <img class="preload__logo" src="assets/img/rs-logo.png" alt="">
+    </div>
+    <div class="preload__num">000</div>
+    <div class="preload__word">Se încarcă</div>
+  </div>
+</div>
 
 <!-- cât ai parcurs din pagină -->
 <div class="progress" id="progress" aria-hidden="true"></div>
@@ -101,6 +142,7 @@
 <!-- ============================================================= hero ===== -->
 <section class="hero">
   <div class="hero__bg">
+    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="hero__grid"></div>
   </div>
 
@@ -143,6 +185,11 @@
   </div>
 </section>
 
+<!-- =========================================================== ticker ===== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track" id="tickerTrack"></div>
+</div>
+
 <!-- ============================================================ stats ===== -->
 <section class="stats" id="statsSection">
   <div class="shell">
@@ -176,7 +223,23 @@
       <h2>Tot ce ține de performanță, într-un singur loc</h2>
       <p class="lead">Fără tweak-uri inventate și fără servicii Windows dezactivate. Doar lucruri documentate, măsurabile și care se pot anula.</p>
     </div>
-    <div class="grid-3" id="featuresGrid"></div>
+    <div class="bento" id="featuresGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================= demo ===== -->
+<section class="section" id="demo">
+  <div class="shell">
+    <div class="section-head section-head--tight reveal-up">
+      <p class="eyebrow">Demonstrație</p>
+      <h2>Plimbă-te prin aplicație</h2>
+      <p class="lead">Fiecare ecran de mai jos e reconstruit după interfața reală. Apasă pe orice pagină din stânga — sau lasă-le să se schimbe singure.</p>
+    </div>
+
+    <div class="demo reveal-up">
+      <div class="demo__tabs" id="demoTabs"></div>
+      <div class="demo__screen stage" id="demoScreen"></div>
+    </div>
   </div>
 </section>
 
@@ -189,6 +252,51 @@
       <p class="lead" id="showcaseText"></p>
     </div>
     <div class="showcase" id="showcase"></div>
+  </div>
+</section>
+
+<!-- ============================================================ bench ===== -->
+<section class="section" id="bench">
+  <div class="shell">
+    <div class="section-head section-head--tight reveal-up">
+      <p class="eyebrow">De ce contează</p>
+      <h2>Nu FPS-ul mediu strică jocul. Vârfurile îl strică.</h2>
+      <p class="lead">Un joc poate arăta 120 FPS pe hârtie și tot să pară smucit. Problema e timpul dintre cadre: când sare de la 16 la 40 de milisecunde, ochiul vede un mic îngheț.</p>
+    </div>
+
+    <div class="bench reveal-up">
+      <div class="bench__copy">
+        <h3>Cache umflat înseamnă cadre întârziate</h3>
+        <p class="lead" style="margin-top:14px">Când FiveM citește dintr-un cache de zeci de gigabytes și discul e plin, încărcarea texturilor ajunge să pice fix peste randare. De acolo vin smuciturile care nu apar niciodată în contorul de FPS.</p>
+
+        <div class="bench__legend">
+          <span class="bench__key bench__key--a"><i></i> Cache încărcat, disc plin</span>
+          <span class="bench__key bench__key--b"><i></i> După curățare</span>
+        </div>
+
+        <div class="bench__cards">
+          <div class="bench__card">
+            <span>Timp între cadre</span>
+            <b>16 – 44 ms</b>
+            <em>variație mare, resimțită ca micro-freeze</em>
+          </div>
+          <div class="bench__card bench__card--after">
+            <span>După</span>
+            <b>16 – 19 ms</b>
+            <em>constant, fără sărituri vizibile</em>
+          </div>
+        </div>
+
+        <p class="bench__disc">
+          Graficul de alături este o ilustrație a formei tipice a unui frametime cu micro-freeze-uri, nu o măsurătoare făcută pe PC-ul tău. Câștigul real depinde de hardware, de drivere și de serverul pe care joci — de asta aplicația îți arată exact ce a curățat și ce a modificat, ca să poți verifica singur.
+        </p>
+      </div>
+
+      <div class="bench__chart">
+        <span class="bench__yl">Timp / cadru</span>
+        <canvas id="benchChart" aria-label="Grafic ilustrativ al timpului dintre cadre, înainte și după curățare"></canvas>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -298,6 +406,20 @@
       </div>
     </div>
 
+    <div class="footer__xl reveal-up" aria-hidden="true">
+      <svg viewBox="0 0 1000 108" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="xlGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#0a72d4" stop-opacity=".55"/>
+            <stop offset="50%" stop-color="#29b8ff" stop-opacity=".38"/>
+            <stop offset="100%" stop-color="#8fe0ff" stop-opacity=".12"/>
+          </linearGradient>
+        </defs>
+        <text x="0" y="88" textLength="1000" lengthAdjust="spacingAndGlyphs">RS OPTIMIZATION</text>
+        <text class="fill" x="0" y="88" textLength="1000" lengthAdjust="spacingAndGlyphs">RS OPTIMIZATION</text>
+      </svg>
+    </div>
+
     <div class="footer__bottom">
       <span>© <span id="year"></span> <span id="footerBrand">RS OPTIMIZATION</span>. Toate drepturile rezervate.</span>
       <div class="footer__social" id="social"></div>
@@ -372,7 +494,8 @@
 
 <div class="toasts" id="toasts"></div>
 
-<script src="assets/js/store.js?v=2"></script>
-<script src="assets/js/site.js?v=2"></script>
+<script src="assets/js/store.js?v=3"></script>
+<script src="assets/js/site.js?v=3"></script>
+<script src="assets/js/fx.js?v=3"></script>
 </body>
 </html>
