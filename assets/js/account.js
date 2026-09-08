@@ -42,6 +42,20 @@
     return API + (API.indexOf('?') >= 0 ? '&' : '?') + query.toString();
   }
 
+  function bindOAuthLink(id, provider) {
+    var link = $(id);
+    if (!link) return;
+    link.href = providerUrl(provider);
+    link.addEventListener('click', function (event) {
+      // OAuth callbacks cannot return to a file:// page. Keep local testing
+      // from opening the Worker JSON error page and explain the requirement.
+      if (location.protocol === 'file:') {
+        event.preventDefault();
+        setStatus('Pagina este deschisă local. Deschide site-ul prin URL-ul public pentru autentificarea cu Discord sau Google.', 'error');
+      }
+    });
+  }
+
   function setAuthMode(mode) {
     var signup = mode === 'signup';
     $('loginTab').classList.toggle('is-active', !signup); $('signupTab').classList.toggle('is-active', signup);
@@ -89,7 +103,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     $('loginTab').addEventListener('click', function () { setAuthMode('login'); }); $('signupTab').addEventListener('click', function () { setAuthMode('signup'); });
-    ['discordOAuth','connectDiscord','discordConnectLarge'].forEach(function (id) { $(id).href = providerUrl('discord'); }); ['googleOAuth','connectGoogle'].forEach(function (id) { $(id).href = providerUrl('google'); });
+    ['discordOAuth','connectDiscord','discordConnectLarge'].forEach(function (id) { bindOAuthLink(id, 'discord'); }); ['googleOAuth','connectGoogle'].forEach(function (id) { bindOAuthLink(id, 'google'); });
     $('loginForm').addEventListener('submit', function (event) { event.preventDefault(); if (!validateForm(this)) return; var btn = this.querySelector('button[type=submit]'); btn.disabled = true; setStatus('Se verifică datele…'); request('/v1/login-email', { method:'POST', body:JSON.stringify({ email:this.elements.email.value.trim(), password:this.elements.password.value }) }).then(function (data) { saveToken(data.sessionToken); showAccount(data); }).catch(function (e) { setStatus(e.message, 'error'); }).finally(function () { btn.disabled = false; }); });
     $('signupForm').addEventListener('submit', function (event) { event.preventDefault(); if (!validateForm(this)) return; var btn = this.querySelector('button[type=submit]'); btn.disabled = true; setStatus('Se creează contul…'); request('/v1/signup-email', { method:'POST', body:JSON.stringify({ displayName:this.elements.displayName.value.trim(), username:this.elements.username.value.trim(), email:this.elements.email.value.trim(), password:this.elements.password.value }) }).then(function (data) { saveToken(data.sessionToken); showAccount(data); $('pageSubtitle').textContent = data.emailVerificationSent ? 'Cont creat. Verifică emailul pentru a confirma adresa.' : 'Cont creat. Poți conecta Discord și revendica licența.'; }).catch(function (e) { setStatus(e.message, 'error'); }).finally(function () { btn.disabled = false; }); });
     $('logoutBtn').addEventListener('click', function () { clearToken(); currentUser = null; $('accountView').hidden = true; $('authView').hidden = false; $('pageTitle').textContent = 'Bine ai venit'; $('pageSubtitle').textContent = 'Intră în cont pentru a-ți gestiona licența RS OPTIMIZATION.'; setAuthMode('login'); setStatus('Ai fost deconectat.', 'ok'); });
