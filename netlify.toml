@@ -38,15 +38,19 @@
   [headers.values]
     Cache-Control = "public, max-age=2592000"
 
+# CSS si JS NU au hash in nume, deci nu pot fi cache-uite lung: browserul ar
+# ramane cu versiunea veche zile intregi dupa un deploy. "no-cache" nu inseamna
+# "fara cache" — inseamna "verifica intai daca s-a schimbat"; daca nu s-a
+# schimbat, Netlify raspunde 304 si nu se retransmite nimic.
 [[headers]]
   for = "/assets/css/*"
   [headers.values]
-    Cache-Control = "public, max-age=604800, must-revalidate"
+    Cache-Control = "public, no-cache"
 
 [[headers]]
   for = "/assets/js/*"
   [headers.values]
-    Cache-Control = "public, max-age=604800, must-revalidate"
+    Cache-Control = "public, no-cache"
 
 # Fallback-ul static: se citeste doar cand nu exista inca nimic salvat in Blobs.
 [[headers]]
