@@ -9,9 +9,16 @@
   var currentUser = null;
 
   function apiPath(path, extra) {
-    var params = new URLSearchParams({ path: path });
+    var params = new URLSearchParams();
     Object.keys(extra || {}).forEach(function (key) { if (extra[key] != null) params.set(key, extra[key]); });
-    return API + (API.indexOf('?') >= 0 ? '&' : '?') + params.toString();
+    // The Netlify function is a query-based proxy; the Worker itself routes
+    // by pathname. Keep both deployments compatible with the same adapter.
+    if (/\/\.netlify\/functions\/auth(?:\?|$)/i.test(API)) {
+      params.set('path', path);
+      return API + (API.indexOf('?') >= 0 ? '&' : '?') + params.toString();
+    }
+    var base = API.replace(/\/+$/, '');
+    return base + path + (params.toString() ? '?' + params.toString() : '');
   }
 
   function request(path, options) {
@@ -38,8 +45,7 @@
   function providerUrl(provider) {
     var returnTo = location.origin + location.pathname;
     var path = '/v1/oauth/' + provider + '/start';
-    var query = new URLSearchParams({ path: path, return_to: returnTo });
-    return API + (API.indexOf('?') >= 0 ? '&' : '?') + query.toString();
+    return apiPath(path, { return_to: returnTo });
   }
 
   function bindOAuthLink(id, provider) {
