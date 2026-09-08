@@ -286,5 +286,3 @@ Ca să nu fie surprize:
 - **nu validează cupoanele la plată.** Cuponul e afișat și recalculează prețul pe
   site; verificarea lui la comandă o faci tu (sau procesatorul de plăți).
 - **nu trimite emailuri** — vezi secțiunea 5.
-"# rssite" 
-"# rs-optimization-site" 

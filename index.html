@@ -46,6 +46,20 @@
   </defs>
 </svg>
 
+<!-- cât ai parcurs din pagină -->
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- granulație fină peste tot, ca degradeurile să nu facă benzi -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- fundal ambiental: patru pete de lumină care plutesc lent peste toată pagina -->
+<div class="ambient" aria-hidden="true">
+  <span class="orb orb--1"></span>
+  <span class="orb orb--2"></span>
+  <span class="orb orb--3"></span>
+  <span class="orb orb--4"></span>
+</div>
+
 <!-- ===================================================== announcement ===== -->
 <div class="announce" id="announce" hidden>
   <span id="announceText"></span>
@@ -87,30 +101,33 @@
 <!-- ============================================================= hero ===== -->
 <section class="hero">
   <div class="hero__bg">
-    <div class="hero__orb hero__orb--1"></div>
-    <div class="hero__orb hero__orb--2"></div>
     <div class="hero__grid"></div>
   </div>
 
-  <div class="shell hero__inner">
+  <div class="shell shell--hero hero__inner">
     <div class="hero__copy">
       <div class="hero__badge"><i></i><span id="heroBadge">Windows 10 / 11 — făcut pentru FiveM</span></div>
-      <h1><span class="chrome" id="heroTitle">PC-ul tău, în sfârșit</span> <span class="neon" id="heroAccent">optimizat</span></h1>
+
+      <h1>
+        <span class="chrome" id="heroTitle">PC-ul tău, în sfârșit</span>
+        <span class="rotator" id="heroRotator" aria-live="polite"></span>
+      </h1>
+
       <p class="hero__sub" id="heroSub"></p>
 
       <div class="hero__cta">
-        <a class="btn btn--primary btn--lg" id="heroCta1" href="#shop">VEZI PACHETELE</a>
-        <a class="btn btn--lg" id="heroCta2" href="#discord">INTRĂ PE DISCORD</a>
+        <a class="btn btn--lg shiny" id="heroCta1" href="#shop"><span>Vezi pachetele</span></a>
+        <a class="btn btn--lg" id="heroCta2" href="#discord">Intră pe Discord</a>
       </div>
 
       <div class="hero__note">
-        <svg width="17" height="17"><use href="#i-shield"/></svg>
+        <svg width="15" height="15"><use href="#i-shield"/></svg>
         <span id="heroNote"></span>
       </div>
     </div>
 
     <div class="hero__visual">
-      <img src="assets/img/rs-logo-hero.png" alt="Logo RS OPTIMIZATION" fetchpriority="high">
+      <img class="hero__logo" src="assets/img/rs-logo-hero.png" alt="Logo RS OPTIMIZATION" fetchpriority="high">
     </div>
   </div>
 </section>
@@ -133,31 +150,54 @@
   </div>
 </section>
 
-<!-- ========================================================= features ===== -->
+<!-- ============================================= ce facem (split) ===== -->
 <section class="section" id="features">
   <div class="shell">
-    <div class="section-head section-head--center reveal-up">
-      <div class="eyebrow">CU CE TE AJUTĂ</div>
-      <h2 class="chrome">Tot ce ține de performanță,<br>într-un singur loc</h2>
-      <p>Fără tweak-uri inventate și fără servicii Windows dezactivate. Doar lucruri documentate, măsurabile și care se pot anula.</p>
+    <div class="section-head reveal-up">
+      <p class="eyebrow" id="introEyebrow"></p>
+      <h2 id="introTitle"></h2>
+      <p class="lead" id="introText"></p>
+    </div>
+
+    <div class="split">
+      <div class="split__left reveal-up">
+        <div class="stack" id="highlightStack"></div>
+      </div>
+      <div class="split__right glow-frame reveal-up" id="splitMockup"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ beneficii (grid) ===== -->
+<section class="section">
+  <div class="shell">
+    <div class="section-head section-head--tight reveal-up">
+      <p class="eyebrow">Cu ce te ajută</p>
+      <h2>Tot ce ține de performanță, într-un singur loc</h2>
+      <p class="lead">Fără tweak-uri inventate și fără servicii Windows dezactivate. Doar lucruri documentate, măsurabile și care se pot anula.</p>
     </div>
     <div class="grid-3" id="featuresGrid"></div>
   </div>
 </section>
 
-<!-- ========================================================= showcase ===== -->
-<section class="section section--tight" id="how">
+<!-- ========================================================= aplicația ===== -->
+<section class="section" id="how">
   <div class="shell">
+    <div class="section-head section-head--tight reveal-up">
+      <p class="eyebrow" id="showcaseEyebrow"></p>
+      <h2 id="showcaseTitle"></h2>
+      <p class="lead" id="showcaseText"></p>
+    </div>
     <div class="showcase" id="showcase"></div>
   </div>
 </section>
 
 <!-- ============================================================ steps ===== -->
-<section class="section section--tight">
+<section class="section">
   <div class="shell">
-    <div class="section-head section-head--center reveal-up">
-      <div class="eyebrow">SIMPLU</div>
-      <h2 class="chrome">Trei pași și ai terminat</h2>
+    <div class="section-head section-head--tight reveal-up">
+      <p class="eyebrow">Simplu</p>
+      <h2>Trei pași și ai terminat</h2>
     </div>
     <div class="steps" id="stepsGrid"></div>
   </div>
@@ -166,10 +206,10 @@
 <!-- ============================================================= shop ===== -->
 <section class="section" id="shop">
   <div class="shell">
-    <div class="section-head section-head--center reveal-up">
-      <div class="eyebrow">SHOP</div>
-      <h2 class="chrome">Alege pachetul potrivit</h2>
-      <p>Licență permanentă, update-uri incluse, suport pe Discord.</p>
+    <div class="section-head section-head--tight reveal-up">
+      <p class="eyebrow">Prețuri</p>
+      <h2>Alege pachetul potrivit</h2>
+      <p class="lead">Licență permanentă, update-uri incluse, suport pe Discord. Fără abonament.</p>
     </div>
 
     <div class="shop-note reveal-up" id="couponBanner" hidden>
@@ -182,11 +222,11 @@
 </section>
 
 <!-- ========================================================== reviews ===== -->
-<section class="section section--tight" id="reviews">
+<section class="section" id="reviews">
   <div class="shell">
-    <div class="section-head section-head--center reveal-up">
-      <div class="eyebrow">PĂRERI</div>
-      <h2 class="chrome">Ce spun cei care îl folosesc</h2>
+    <div class="section-head section-head--tight reveal-up">
+      <p class="eyebrow">Păreri</p>
+      <h2>Ce spun cei care îl folosesc</h2>
     </div>
     <div class="grid-3" id="reviewsGrid"></div>
   </div>
@@ -194,24 +234,27 @@
 
 <!-- ============================================================== faq ===== -->
 <section class="section" id="faq">
-  <div class="shell">
-    <div class="section-head section-head--center reveal-up">
-      <div class="eyebrow">ÎNTREBĂRI FRECVENTE</div>
-      <h2 class="chrome">Ce trebuie să știi</h2>
+  <div class="shell shell--narrow">
+    <div class="section-head section-head--tight reveal-up">
+      <h2>Întrebări frecvente</h2>
+      <p class="lead">Tot ce trebuie să știi înainte să cumperi.</p>
     </div>
     <div class="faq" id="faqList"></div>
+    <div class="faq__more">
+      <button class="pill-btn" id="faqMore" hidden></button>
+    </div>
   </div>
 </section>
 
 <!-- ========================================================== discord ===== -->
-<section class="section section--tight" id="discord">
+<section class="section" id="discord">
   <div class="shell">
     <div class="discord-band reveal-up">
-      <div class="discord-band__icon"><svg width="34" height="34"><use href="#i-discord"/></svg></div>
-      <div class="eyebrow" id="discordEyebrow">COMUNITATE</div>
-      <h2 class="chrome" id="discordTitle">Intră pe Discord</h2>
+      <div class="discord-band__icon"><svg width="30" height="30"><use href="#i-discord"/></svg></div>
+      <p class="eyebrow" id="discordEyebrow">Comunitate</p>
+      <h2 id="discordTitle">Intră pe Discord</h2>
       <p id="discordText"></p>
-      <a class="btn btn--primary btn--lg" id="discordBtn" data-link="discord" href="#">INTRĂ PE SERVER</a>
+      <a class="btn btn--primary btn--lg" id="discordBtn" data-link="discord" href="#">Intră pe server</a>
     </div>
   </div>
 </section>
@@ -321,6 +364,11 @@
     <div class="confetti" id="confetti"></div>
   </div>
 </div>
+
+<!-- buton flotant de Discord -->
+<a class="discord-fab" id="discordFab" data-link="discord" href="#" aria-label="Intră pe Discord" hidden>
+  <svg width="26" height="26"><use href="#i-discord"/></svg>
+</a>
 
 <div class="toasts" id="toasts"></div>
 
