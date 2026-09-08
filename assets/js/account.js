@@ -99,7 +99,7 @@
   function loadSession() {
     var hash = new URLSearchParams(location.hash.slice(1));
     var oauthError = hash.get('oauth_error');
-    if (oauthError) { clearToken(); setStatus(oauthError === 'already_linked' ? 'Acest provider este deja legat de alt cont.' : 'Autentificarea externă nu a putut fi finalizată.', 'error'); history.replaceState(null, '', location.pathname + location.search); }
+    if (oauthError) { clearToken(); setStatus(oauthError === 'already_linked' ? 'Acest provider este deja legat de alt cont.' : oauthError === 'provider_not_configured' ? 'Conectarea externă nu este configurată încă pe server.' : 'Autentificarea externă nu a putut fi finalizată.', 'error'); history.replaceState(null, '', location.pathname + location.search); }
     if (hash.get('session')) { saveToken(hash.get('session')); history.replaceState(null, '', location.pathname + location.search); }
     var verify = new URLSearchParams(location.search).get('verify');
     if (verify) request('/v1/email/verify', { method:'POST', body:JSON.stringify({ token: verify }) }).then(function () { setAuthMode('login'); setStatus('Email verificat. Te poți autentifica acum.', 'ok'); history.replaceState(null, '', location.pathname); }).catch(function (e) { setStatus(e.message, 'error'); });
