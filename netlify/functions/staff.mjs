@@ -2,7 +2,7 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 
 const json = (body, status = 200) => new Response(JSON.stringify(body), {
   status,
-  headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' }
+  headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', 'access-control-allow-origin': 'https://nutzusefu.github.io', 'access-control-allow-headers': 'X-Admin-Token, Content-Type', 'access-control-allow-methods': 'GET, POST, OPTIONS' }
 });
 
 function tokenValid(token) {
@@ -15,6 +15,7 @@ function tokenValid(token) {
 }
 
 export default async (req) => {
+  if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: { 'access-control-allow-origin': 'https://nutzusefu.github.io', 'access-control-allow-headers': 'X-Admin-Token, Content-Type', 'access-control-allow-methods': 'GET, POST, OPTIONS' } });
   if (req.method !== 'GET' && req.method !== 'POST') return json({ error: 'Metoda nu este permisă.' }, 405);
   if (!tokenValid(req.headers.get('x-admin-token') || '')) return json({ error: 'Neautentificat.' }, 401);
   const base = String(process.env.LICENSE_SERVICE_URL || process.env.LICENSE_API_URL || 'https://rs-optimization-license-api.radu8781.workers.dev').replace(/\/$/, '');
