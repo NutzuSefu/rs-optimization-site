@@ -26,6 +26,8 @@
     var source = null;
     var cache = null;
     var API_BASE = String(global.RS_SITE_API_BASE || '').replace(/\/$/, '');
+    var WORKER_API = !!API_BASE;
+    if (WORKER_API) { API_CONFIG = 'site-config'; API_ADMIN_AUTH = 'admin/web-login'; }
     function apiPath(path) { return API_BASE ? API_BASE + '/' + path.replace(/^\//, '') : path; }
 
     function jsonFetch(url, options) {
@@ -153,7 +155,7 @@
     }
 
     function status() {
-        return jsonFetch(apiPath(API_ADMIN_AUTH) + '?action=status');
+        return WORKER_API ? jsonFetch(apiPath('admin/web-status')) : jsonFetch(apiPath(API_ADMIN_AUTH) + '?action=status');
     }
 
     function token() {
