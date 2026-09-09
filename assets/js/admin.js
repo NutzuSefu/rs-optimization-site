@@ -352,7 +352,13 @@
     function loadStaffDashboard() {
         var workerApi = !!window.RS_SITE_API_BASE;
         var staffEndpoint = workerApi ? window.RS_SITE_API_BASE + '/admin/dashboard' : 'api/staff.php';
-        fetch(staffEndpoint, { method: workerApi ? 'POST' : 'GET', headers: { 'X-Admin-Token': S.token(), 'Authorization': workerApi ? 'Bearer ' + S.token() : '' }, body: workerApi ? '{}' : undefined })
+        // GitHub Pages talks directly to the Worker. Keep request headers
+        // aligned with the Worker CORS allow-list; X-Admin-Token is only used
+        // by the legacy Netlify/PHP endpoint.
+        var staffHeaders = workerApi
+            ? { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + S.token() }
+            : { 'X-Admin-Token': S.token() };
+        fetch(staffEndpoint, { method: workerApi ? 'POST' : 'GET', headers: staffHeaders, body: workerApi ? '{}' : undefined })
             .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error || 'Eroare'); return d; }); })
             .then(function (d) { staffData = d; renderStaffDashboard(d); })
             .catch(function (e) {
