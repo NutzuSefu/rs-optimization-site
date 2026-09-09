@@ -331,6 +331,7 @@
     }
 
     var TAB_TITLES = {
+        staff: 'Staff Dashboard', creators: 'Creatori', tickets: 'Tickets inteligente',
         products: 'Produse', coupons: 'Cupoane', popup: 'Popup email',
         content: 'Conținut site', links: 'Link-uri', subs: 'Abonați', settings: 'Setări'
     };
@@ -344,6 +345,29 @@
         });
         $('panelTitle').textContent = TAB_TITLES[name] || name;
         if (name === 'subs') loadSubs();
+        if (name === 'staff' || name === 'creators' || name === 'tickets') loadStaffDashboard();
+    }
+
+    var staffData = null;
+    function loadStaffDashboard() {
+        fetch('api/staff.php', { headers: { 'X-Admin-Token': S.token() } })
+            .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error || 'Eroare'); return d; }); })
+            .then(function (d) { staffData = d; renderStaffDashboard(d); })
+            .catch(function (e) {
+                var message = '<div class="note"><svg width="18" height="18"><use href="#a-warn"/></svg><div>' + S.escapeHtml(e.message || 'Nu am putut încărca datele staff.') + '</div></div>';
+                ['staffDashboard', 'creatorTable', 'ticketTable'].forEach(function (id) { var el = $(id); if (el) el.innerHTML = message; });
+            });
+    }
+    function money(cents) { return (Number(cents || 0) / 100).toFixed(2) + ' €'; }
+    function renderStaffDashboard(d) {
+        var s = d.stats || {}, t = s.tickets || {};
+        $('staffDashboard').innerHTML = [
+            ['Utilizatori', s.users || 0, 'Conturi înregistrate'], ['Licențe active', s.activatedLicenses || 0, (s.licenses || 0) + ' emise'],
+            ['Vânzări', money(s.salesCents), (s.redemptions || 0) + ' coduri folosite'], ['Comisioane', money(s.commissionsCents), 'pentru creatori'],
+            ['Tickets deschise', t.opened || 0, 'intake automat'], ['Tickets închise', t.closed || 0, 'rezolvate'], ['Preluate de staff', t.claimed || 0, 'în lucru']
+        ].map(function (x) { return '<div class="staff-card"><strong>' + S.escapeHtml(x[1]) + '</strong><span>' + S.escapeHtml(x[0]) + '</span><small>' + S.escapeHtml(x[2]) + '</small></div>'; }).join('');
+        $('creatorTable').innerHTML = (d.creatorCodes || []).length ? '<table class="staff-table"><thead><tr><th>Cod</th><th>Creator Discord</th><th>Vânzări</th><th>Comision</th><th>Status</th></tr></thead><tbody>' + d.creatorCodes.map(function (c) { return '<tr><td><b>' + S.escapeHtml(c.code) + '</b></td><td>' + S.escapeHtml(c.creator_discord_id) + '</td><td>' + money(c.total_sales_cents) + '</td><td>' + money(c.total_commission_cents) + '</td><td>' + (c.active ? 'Activ' : 'Oprit') + '</td></tr>'; }).join('') + '</tbody></table>' : '<p class="hint">Nu există încă coduri de creator.</p>';
+        $('ticketTable').innerHTML = (d.recentTickets || []).length ? '<table class="staff-table"><thead><tr><th>Ticket</th><th>Eveniment</th><th>Categorie</th><th>Data</th></tr></thead><tbody>' + d.recentTickets.map(function (x) { return '<tr><td>' + S.escapeHtml(x.ticket_id) + '</td><td>' + S.escapeHtml(x.event) + '</td><td>' + S.escapeHtml(x.category || '—') + '</td><td>' + S.escapeHtml(new Date(x.created_utc).toLocaleString('ro-RO')) + '</td></tr>'; }).join('') + '</tbody></table>' : '<p class="hint">Nu există evenimente de ticket încă.</p>';
     }
 
     function renderSource() {

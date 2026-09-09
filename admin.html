@@ -60,6 +60,9 @@
     </div>
 
     <nav class="side__nav" id="tabs">
+      <button data-tab="staff"><svg width="17" height="17"><use href="#a-users"/></svg> Staff Dashboard</button>
+      <button data-tab="creators"><svg width="17" height="17"><use href="#a-tag"/></svg> Creatori</button>
+      <button data-tab="tickets"><svg width="17" height="17"><use href="#a-popup"/></svg> Tickets inteligente</button>
       <button data-tab="products"><svg width="17" height="17"><use href="#a-box"/></svg> Produse <span class="count" id="cProducts"></span></button>
       <button data-tab="coupons"><svg width="17" height="17"><use href="#a-tag"/></svg> Cupoane <span class="count" id="cCoupons"></span></button>
       <button data-tab="popup"><svg width="17" height="17"><use href="#a-popup"/></svg> Popup email</button>
@@ -88,6 +91,16 @@
     </div>
 
     <div class="content">
+      <section class="panel" data-panel="staff">
+        <div class="note"><svg width="18" height="18"><use href="#a-info"/></svg><div>Imagine de ansamblu pentru licențe, vânzări, creatori și suport. Datele vin securizat din License API.</div></div>
+        <div id="staffDashboard" class="staff-grid"><div class="fieldset">Se încarcă statisticile…</div></div>
+      </section>
+      <section class="panel" data-panel="creators">
+        <div class="fieldset"><h3>Coduri de creator</h3><div id="creatorTable">Se încarcă…</div></div>
+      </section>
+      <section class="panel" data-panel="tickets">
+        <div class="fieldset"><h3>Ticket inteligent</h3><p class="hint">Fluxul Discord trimite automat evenimentele de ticket aici: deschis, preluat, închis și cod de creator.</p><div id="ticketTable">Se încarcă…</div></div>
+      </section>
       <!-- ------------------------------------------------------- produse -->
       <section class="panel" data-panel="products">
         <div class="note">

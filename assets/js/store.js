@@ -14,7 +14,8 @@
 (function (global) {
     'use strict';
 
-    var API_CONFIG = 'api/config.php';
+    var API_CONFIG = 'api/config';
+    var API_ADMIN_AUTH = 'api/admin-auth.php';
     var API_SUBSCRIBE = 'api/subscribe.php';
     var JSON_FALLBACK = 'data/site.json';
     var LS_CONFIG = 'rsopt.config.draft';
@@ -130,7 +131,7 @@
     // ------------------------------------------------------------------ auth
 
     function login(password) {
-        return jsonFetch(API_CONFIG + '?action=login', {
+        return jsonFetch(API_ADMIN_AUTH + '?action=login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ password: password })
@@ -150,7 +151,7 @@
     }
 
     function status() {
-        return jsonFetch(API_CONFIG + '?action=status');
+        return jsonFetch(API_ADMIN_AUTH + '?action=status');
     }
 
     function token() {

@@ -307,3 +307,13 @@ https://<worker-host>/v1/oauth/google/callback
 Aplică migrarea D1 `migrations/0004_web_auth.sql` înainte de publicarea Worker-ului.
 Parolele nu sunt stocate în clar, iar ban-ul dat din bot este respectat la următoarea
 verificare de sesiune în site și în aplicație.
+## Staff dashboard și creator dashboard
+
+Panoul `admin.html` include acum filele **Staff Dashboard**, **Creatori** și
+**Tickets inteligente**. Datele sunt citite prin `api/staff.php`, care păstrează
+`LICENSE_ADMIN_SECRET` doar pe server și nu îl trimite în browser.
+
+Pentru Netlify setează variabilele `LICENSE_SERVICE_URL` și `LICENSE_ADMIN_SECRET`
+(aceeași valoare ca secretul `ADMIN_SECRET` al Worker-ului), apoi publică site-ul.
+Conturile cu rol de creator pot deschide `creator.html`; pagina folosește sesiunea
+normală a contului și afișează codurile, vânzările și comisioanele.

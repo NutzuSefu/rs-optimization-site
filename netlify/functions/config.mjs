@@ -15,7 +15,6 @@
  *   POST /api/config.php                 -> salveaza          (necesita token)
  */
 
-import { getStore } from '@netlify/blobs';
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 const STORE_NAME = 'rs-optimization';
@@ -73,11 +72,11 @@ function tokenValid(token) {
 
 // -------------------------------------------------------------------- handler
 
-export default async (req) => {
-    const url = new URL(req.url);
+async function handleConfig(req) {
+    let url;
+    try { url = new URL(String(req.url || ''), 'https://netlify.local'); }
+    catch { return fail('Cerere invalidă.', 400); }
     const action = url.searchParams.get('action') || '';
-    const store = getStore(STORE_NAME);
-
     // ---------------------------------------------------------------- status
     if (req.method === 'GET' && action === 'status') {
         return json(
@@ -95,6 +94,15 @@ export default async (req) => {
             { 'Cache-Control': 'no-store' },
         );
     }
+
+    // Blobs is initialized lazily. This keeps the status/login route healthy
+    // even when a deploy has not provisioned a Blobs store yet.
+    let store;
+    try {
+        const blobs = await import('@netlify/blobs');
+        store = blobs.getStore(STORE_NAME);
+    }
+    catch (error) { return fail('Stocarea Netlify Blobs nu este disponibilă pe acest deploy.', 503); }
 
     // -------------------------------------------------- citirea configuratiei
     if (req.method === 'GET') {
@@ -191,9 +199,15 @@ export default async (req) => {
     }
 
     return json({ ok: true, savedAt: new Date().toISOString() }, 200, { 'Cache-Control': 'no-store' });
+}
+
+export default async (req) => {
+    try { return await handleConfig(req); }
+    catch (error) {
+        console.error('Config function failed:', error?.message || error);
+        return fail('Backend config error: ' + (error?.message || 'eroare necunoscută'), 500);
+    }
 };
 
 /** Functia raspunde direct pe calea folosita si de varianta cu PHP. */
-export const config = {
-    path: '/api/config.php',
-};
+export const config = { path: '/api/config' };
