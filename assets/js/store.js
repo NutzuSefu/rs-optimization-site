@@ -25,6 +25,8 @@
     /** Sursa din care s-a citit ultima data: 'api' | 'json' | 'local'. */
     var source = null;
     var cache = null;
+    var API_BASE = String(global.RS_SITE_API_BASE || '').replace(/\/$/, '');
+    function apiPath(path) { return API_BASE ? API_BASE + '/' + path.replace(/^\//, '') : path; }
 
     function jsonFetch(url, options) {
         return fetch(url, options).then(function (res) {
@@ -64,7 +66,7 @@
             if (draft) { source = 'local'; cache = draft; return Promise.resolve(draft); }
         }
 
-        return jsonFetch(API_CONFIG + '?t=' + Date.now())
+        return jsonFetch(apiPath(API_CONFIG) + '?t=' + Date.now())
             .then(function (data) {
                 if (!data || !data.config) throw new Error('raspuns invalid');
                 source = 'api';
@@ -94,7 +96,7 @@
      */
     function save(config, token) {
         config.updatedAt = new Date().toISOString();
-        return jsonFetch(API_CONFIG, {
+        return jsonFetch(apiPath(API_CONFIG), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'X-Admin-Token': token || '' },
             body: JSON.stringify({ config: config })
@@ -131,7 +133,7 @@
     // ------------------------------------------------------------------ auth
 
     function login(password) {
-        return jsonFetch(API_ADMIN_AUTH + '?action=login', {
+        return jsonFetch(apiPath(API_ADMIN_AUTH) + '?action=login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ password: password })
@@ -151,7 +153,7 @@
     }
 
     function status() {
-        return jsonFetch(API_ADMIN_AUTH + '?action=status');
+        return jsonFetch(apiPath(API_ADMIN_AUTH) + '?action=status');
     }
 
     function token() {

@@ -350,7 +350,8 @@
 
     var staffData = null;
     function loadStaffDashboard() {
-        fetch('api/staff.php', { headers: { 'X-Admin-Token': S.token() } })
+        var staffEndpoint = window.RS_SITE_API_BASE ? window.RS_SITE_API_BASE + '/staff.php' : 'api/staff.php';
+        fetch(staffEndpoint, { headers: { 'X-Admin-Token': S.token() } })
             .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.error || 'Eroare'); return d; }); })
             .then(function (d) { staffData = d; renderStaffDashboard(d); })
             .catch(function (e) {
